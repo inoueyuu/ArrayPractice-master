@@ -71,7 +71,11 @@ namespace ArrayPractice
                     labels[i].Visible = false;
                 }
 
-
+                if (labels[i].Visible == false)
+                {
+                    timer1.Enabled = false;
+                    label4.Visible = true;
+                }
             }
 
 
@@ -80,14 +84,14 @@ namespace ArrayPractice
                 timer1.Enabled = false;
                 label4.Visible = true;
             }
-            /*if (score == 0)
+            if (score == 0)
             {
                 timer1.Enabled = false;
                 label5.Visible = true;
                 label1.Visible = false;
                 label2.Visible = false;
                 label3.Visible = false;
-            }*/
+            }
         }
 
         private void scoreLabel_Click(object sender, EventArgs e)
