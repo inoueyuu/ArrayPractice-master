@@ -13,17 +13,17 @@ namespace ArrayPractice
     public partial class Form1 : Form
     {
         static Random rand = new Random();
-
-        int[] vx = new int[100];
-        int[] vy = new int[100];
-        Label[] labels = new Label[100];
+        const int LabelMax = 10;
+        int[] vx = new int[LabelMax];
+        int[] vy = new int[LabelMax];
+        Label[] labels = new Label[LabelMax];
         int score = 100;
 
         public Form1()
         {
             InitializeComponent();
             
-            for (int i = 0;i < 100; i++)
+            for (int i = 0;i < LabelMax; i++)
             {
                 vx[i] = rand.Next(-20, 21);
                 vy[i] = rand.Next(-20, 21);
@@ -42,25 +42,26 @@ namespace ArrayPractice
             scoreLabel.Text = $"Score {score:000}";
             Point fpos = PointToClient(MousePosition);
 
-            for (int i = 0;i < 100;i++)
+            for (int i = 0;i < LabelMax; i++)
             {
-                labels[i].Left += vx[0];
-                labels[i].Top += vy[0];
+                
+                labels[i].Left += vx[i];
+                labels[i].Top += vy[i];
                 if (labels[i].Left < 0)
                 {
-                    vx[0] = Math.Abs(vx[0]);
+                    vx[i] = Math.Abs(vx[i]);
                 }
                 if (labels[i].Top < 0)
                 {
-                    vy[0] = Math.Abs(vy[0]);
+                    vy[i] = Math.Abs(vy[i]);
                 }
                 if (labels[i].Right > ClientSize.Width)
                 {
-                    vx[0] = -Math.Abs(vx[0]);
+                    vx[i] = -Math.Abs(vx[i]);
                 }
                 if (labels[i].Bottom > ClientSize.Height)
                 {
-                    vy[0] = -Math.Abs(vy[0]);
+                    vy[i] = -Math.Abs(vy[i]);
                 }
                 if (    (fpos.X >= labels[i].Left)
                      && (fpos.X < labels[i].Right)
@@ -91,7 +92,18 @@ namespace ArrayPractice
 
         private void scoreLabel_Click(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < 10; i++)
+            {
+                if(i == 2)
+                {
+                    continue;
+                }
+                if(i == 5)
+                {
+                    break;
+                }
+                MessageBox.Show("" + i);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
