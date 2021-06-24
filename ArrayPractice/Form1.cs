@@ -20,7 +20,6 @@ namespace ArrayPractice
         int vy1 = rand.Next(-20, 21);
         int vx2 = rand.Next(-20, 21);
         int vy2 = rand.Next(-20, 21);
-        int count = 0;
         int score = 100;
 
         public Form1()
@@ -67,7 +66,6 @@ namespace ArrayPractice
                 && (fpos.Y >= label1.Top)
                 && (fpos.Y < label1.Bottom))
             {
-                label1.Enabled = false;
                 label1.Visible = false;
             }
 
@@ -97,7 +95,6 @@ namespace ArrayPractice
                 && (fpos.Y >= label2.Top)
                 && (fpos.Y < label2.Bottom))
             {
-                label2.Enabled = false;
                 label2.Visible = false;
             }
 
@@ -127,12 +124,22 @@ namespace ArrayPractice
                 && (fpos.Y >= label3.Top)
                 && (fpos.Y < label3.Bottom))
             {
-                label3.Enabled = false;
                 label3.Visible = false;
             }
 
-            if (label1.Enabled == false && label2.Enabled == false && label3.Enabled == false)
+            if (label1.Visible == false && label2.Visible == false && label3.Visible == false)
+            {
                 timer1.Enabled = false;
+                label4.Visible = true;
+            }
+            if (score == 0)
+            {
+                timer1.Enabled = false;
+                label5.Visible = true;
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+            }
         }
 
         private void scoreLabel_Click(object sender, EventArgs e)
